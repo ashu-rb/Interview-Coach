@@ -1,0 +1,15 @@
+FROM continuumio/miniconda3:latest
+LABEL Author, Dhaval Thakkar
+
+RUN apt-get update && apt-get install -y git
+
+ENV APP_HOME /root/home
+WORKDIR $APP_HOME
+
+RUN git clone https://github.com/DhavalThkkar/Resume_Parser.git
+
+RUN conda install pip -y
+RUN conda update --all -y
+RUN pip install -r Resume_Parser/requirements.txt
+
+CMD ["/bin/bash"]
