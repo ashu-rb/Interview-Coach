@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Online Feedback Form</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+   
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, p { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+      h1 {
+      font-weight: 400;
+      }
+      h4 {
+      margin: 22px 0 4px;
+      color: #095484;
+      }
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 3px;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 2px 5px #ccc; 
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      vertical-align: middle;
+      }
+      input:hover, textarea:hover {
+      outline: none;
+      border: 1px solid #095484;
+      }
+      .first-name {
+      margin-bottom: 22px;
+      }
+
+      span {
+      color: red;
+      }
+      th, td {
+      width: 21%;
+      padding: 15px 0;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+      vertical-align: unset;
+      line-height: 18px;
+      font-weight: 400;
+      word-break: break-all;
+      }
+      .first-col {
+      width: 16%;
+      text-align: left;
+      }
+        .clicker {
+       width: 150px;
+      padding: 10px;
+      border: none;
+      -webkit-border-radius: 5px; 
+      -moz-border-radius: 5px; 
+      border-radius: 5px; 
+      background-color: #095484;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+}
+
+#hiddendiv{
+  display: none;
+height:150px;
+background-color:white;
+}
+.btn-block {
+      margin-top: 20px;
+      text-align: center;
+      }
+/* .clicker:focus + .hiddendiv{
+display:block;
+}
+      table {
+      width: 100%;
+      }
+      textarea {
+      width: calc(100% - 6px);
+      }
+      .btn-block {
+      margin-top: 20px;
+      text-align: center;
+      }
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      -webkit-border-radius: 5px; 
+      -moz-border-radius: 5px; 
+      border-radius: 5px; 
+      background-color: #095484;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background-color: #0666a3;
+      }
+      @media (min-width: 568px) {
+      th, td {
+      word-break: keep-all;
+      }
+      } */
+    </style>
+  </head>
+  <body>
+    <div class="testbox">
+      <form action="/">
+        <h1>Technical Interview Feedback Report</h1>
+        <h4>Name: <span> Aayush Patel </span></h4>
+        <h4>Role: <span> Software Development Engineer </span></h4>
+       <!-- <input class="first-name" type="text" name="name" placeholder="First" />
+        <input type="text" name="name" placeholder="Last" />--> 
+        <h4>Email: <span> aaryan2134@gmail.com</span></h4>
+          
+        <h4>Our Evaluation<span></span></h4>
+        <table>
+          <tr>
+            <td class="first-col"></td>
+            <td class="first-col">Percentage Score</td>
+            
+            
+          </tr>
+   <tr>
+            <td class="first-col">Voice Modulation</td>
+            <th class="first-col">90%</th>
+           
+          </tr>
+       
+          <tr>
+            <td class="first-col">Speed</td>
+           <th class="first-col">85%</th>
+            
+          </tr>
+          <tr>
+            <td class="first-col">Answer Appropriateness</td>
+           <th class="first-col">77%</th>
+          </tr>
+          <tr>
+            <td class="first-col">Overall Speaking Skills</td>
+            <th class="first-col">88%</th>
+          </tr>
+          <tr>
+            <td class="first-col">Overall Answer Quality</td>
+            <th class="first-col">80%</th>
+          </tr>
+        </table><br />
+
+      <b> <label style="color:navy;">Select Resume: </label></b>
+    <input style="width:200px" type="file" id="myFile" /> 
+   
+    <button class="clicker" type="button" onclick="showResult()">Click The Button</button>
+
+     
+     <div id="hiddendiv">
+       <div id="piechart"></div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+  function showResult() {
+      var v = document.getElementById("hiddendiv");
+      if (v.style.display === "none") {
+         v.style.display = "block";
+      } else {
+         v.style.display = "none";
+      }
+   }
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task', 'Hours per Day'],
+  ['Coding Skills', 4],
+  ['Soft Skills', 2],
+  ['Projects', 4],
+  ['Experience', 2],
+  ['Extra Curricular', 8]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Resume Summary', 'width':550, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+ 
+</script>
+
+</div>
+
+
+<br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br></br>
+    <br>  </br>
+      
+   <h4>Selection Probability Score: <span>76%</span></h4>
+   
+     
+    
+        <h4>Additional Comments:<span>Overall good soft skills and communications skills. There is need to improve the answer quality and work more on coding skills </span></h4>
+       
+        <div class="btn-block">
+          <button  class="clicker" type="submit" href="/">Send Feedback</button>
+          </div>
+      </form>
+    </div>
+  </body>
+</html>
